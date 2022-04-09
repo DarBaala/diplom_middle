@@ -37,4 +37,3 @@ const popup = () => {
 };
 popup();
 //free_visit_form
-const formWrapper = document.querySelector(".form-content");
