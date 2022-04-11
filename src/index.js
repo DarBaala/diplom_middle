@@ -120,3 +120,27 @@ const validForm = () => {
   });
 };
 validForm();
+
+/// (6 пункт ТЗ) Подарок
+const gift = () => {
+  const openGift = (event) => {
+    let target = event.target;
+    const iconGift = document.getElementById("gift-open"),
+      modalGift = document.getElementById("gift"),
+      closeGift = document.getElementById("close-gift"),
+      giftOverlay = document.getElementById("overlay-gift"),
+      giftOkay = document.getElementById("gift-ok");
+    if (target === iconGift) {
+      iconGift.style.cssText = "display: none";
+      modalGift.style.display = "flex";
+    } else if (
+      target === closeGift ||
+      target === giftOverlay ||
+      target === giftOkay
+    ) {
+      modalGift.style.display = "none";
+    }
+  };
+  document.body.addEventListener("click", openGift);
+};
+gift();
