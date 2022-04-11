@@ -56,7 +56,23 @@ const sendForm = (formName, color = "color: white;") => {
   const form = document.getElementById(formName),
     errorMessage = "Что-то пошло не так :(",
     loadMessage = "Загрузка...",
-    successMessage = "Спасибо! Мы скоро с Вами свяжемся!";
+    thanks = document.getElementById("thanks");
+  const thanksModal = () => {
+    thanks.style.display = "flex";
+    const thanksOverlay = document.getElementById("overlay-thanks"),
+      thanksClose = document.getElementById("close-thanks"),
+      thanksOkay = document.getElementById("thanks-okay");
+    document.body.addEventListener("click", (event) => {
+      let target = event.target;
+      if (
+        target === thanksOverlay ||
+        target === thanksClose ||
+        target === thanksOkay
+      ) {
+        thanks.style.display = "none";
+      }
+    });
+  };
   let statusMessage = document.createElement("div");
   statusMessage.style.cssText = `${color} padding-top: 10px; font-size: 14px;`;
   form.addEventListener("submit", (event) => {
@@ -69,7 +85,12 @@ const sendForm = (formName, color = "color: white;") => {
         return;
       }
       if (request.status === 200) {
-        statusMessage.textContent = successMessage;
+        const callback = document.getElementById("callback_form"),
+          freeVisit = document.getElementById("free_visit_form");
+        statusMessage.remove();
+        callback.style.display = "none";
+        freeVisit.style.display = "none";
+        thanksModal();
         form.reset();
       } else {
         statusMessage.textContent = errorMessage;
