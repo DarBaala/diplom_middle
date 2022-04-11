@@ -86,3 +86,37 @@ sendForm("form2");
 sendForm("banner-form");
 sendForm("card_order", "color: black;");
 sendForm("footer_form");
+
+/// Валидатор инпутов
+const validForm = () => {
+  const formNameInput = (event) => {
+    const target = event.target;
+    target.value = target.value.replace(/[^а-яё\s]/gi, "");
+  };
+  const formNameBlur = (event) => {
+    const target = event.target;
+    target.value = target.value
+      .split(/\s+/)
+      .map((str) => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase())
+      .join(" ");
+  };
+  const formePhoneInput = (event) => {
+    const target = event.target;
+    target.value = target.value.replace(/[^+\d]/g, "");
+  };
+  const formPhoneBlur = (event) => {
+    const target = event.target;
+    target.value = target.value.replace(/^[\s]+|[\s\+]{1,}$/g, "");
+  };
+  document.body.addEventListener("click", (event) => {
+    const target = event.target;
+    if (target.matches('[placeholder="Ваше имя..."]')) {
+      target.addEventListener("input", formNameInput);
+      target.addEventListener("blur", formNameBlur);
+    } else if (target.matches('[placeholder="Ваш номер телефона..."]')) {
+      target.addEventListener("input", formePhoneInput);
+      target.addEventListener("blur", formPhoneBlur);
+    }
+  });
+};
+validForm();
