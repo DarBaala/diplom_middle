@@ -56,6 +56,7 @@ const sendForm = (formName, color = "color: white;") => {
   const form = document.getElementById(formName),
     errorMessage = "Что-то пошло не так :(",
     loadMessage = "Загрузка...",
+    oncheck = "Пожалуйста, примите пользовательское соглашение!",
     thanks = document.getElementById("thanks");
   const thanksModal = () => {
     thanks.style.display = "flex";
@@ -165,3 +166,37 @@ const gift = () => {
   document.body.addEventListener("click", openGift);
 };
 gift();
+
+/// (7 пункт ТЗ) Слайдер
+const slider = () => {
+  const slide = document.querySelectorAll(".slide-off"),
+    mainSlider = document.querySelector(".main-slider");
+  mainSlider.style.cssText = "position: relative;";
+  slide.forEach((item) => {
+    item.style.cssText = "opacity: 0; position: absolute;";
+  });
+  slide[0].style.opacity = "1";
+  let currentSlide = 0;
+  const autoPlay = () => {
+    slide[currentSlide].style.opacity = 0;
+    currentSlide++;
+    if (currentSlide >= slide.length) {
+      currentSlide = 0;
+    }
+    slide[currentSlide].style.opacity = 1;
+  };
+  const startSlide = () => {
+    setInterval(autoPlay, 3000);
+  };
+  startSlide();
+};
+slider();
+// let check = document.querySelector("#check");
+// check.addEventListener("change", () => {
+
+//   if (check.checked) {
+//     console.log(555);
+//   } else {
+//     console.log(666);
+//   }
+// });
