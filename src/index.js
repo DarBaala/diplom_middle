@@ -52,7 +52,11 @@ const callbackForm = () => {
 callbackForm();
 
 /// (5 пункт ТЗ) Все формы на странице и в модальных окнах должны отправляться посредством ajax
-const sendForm = (formName, color = "color: white;") => {
+const sendForm = (
+  formName,
+  linkCheck = "card_leto_mozaika",
+  color = "color: white;"
+) => {
   const form = document.getElementById(formName),
     errorMessage = "Что-то пошло не так :(",
     loadMessage = "Загрузка...",
@@ -76,6 +80,17 @@ const sendForm = (formName, color = "color: white;") => {
   };
   let statusMessage = document.createElement("div");
   statusMessage.style.cssText = `${color} padding-top: 10px; font-size: 14px;`;
+  const checkDom = document.getElementById(`${linkCheck}`);
+  const check = (event) => {
+    const target = event.target;
+    if (target.matches('[type="submit"]')) {
+      if (!checkDom.checked) {
+        form.appendChild(statusMessage);
+        statusMessage.textContent = oncheck;
+      }
+    }
+  };
+  document.body.addEventListener("click", check);
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     form.appendChild(statusMessage);
@@ -103,10 +118,10 @@ const sendForm = (formName, color = "color: white;") => {
     request.send(formData);
   });
 };
-sendForm("form1");
-sendForm("form2");
-sendForm("banner-form");
-sendForm("card_order", "color: black;");
+sendForm("form1", "check");
+sendForm("form2", "check2");
+sendForm("banner-form", "check1");
+sendForm("card_order", "card_check", "color: black;");
 sendForm("footer_form");
 
 /// Валидатор инпутов
@@ -191,12 +206,3 @@ const slider = () => {
   startSlide();
 };
 slider();
-// let check = document.querySelector("#check");
-// check.addEventListener("change", () => {
-
-//   if (check.checked) {
-//     console.log(555);
-//   } else {
-//     console.log(666);
-//   }
-// });
