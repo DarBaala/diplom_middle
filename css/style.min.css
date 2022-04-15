@@ -1961,6 +1961,29 @@ p.personal-data input[type="checkbox"]:checked + label:before {
   font-weight: 500;
   margin-top: 30px;
 }
+.services-btn {
+  position: absolute;
+  cursor: pointer;
+  top: 40%;
+  width: 40px;
+  height: 40px;
+  background-color: #ffd11a;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+}
+.services-next {
+  right: 20px;
+  background-image: url(/images/arrow-right.png);
+  background-position: 55% 50%;
+  outline: none;
+}
+.services-prev {
+  left: 20px;
+  background-image: url(/images/arrow-left.png);
+  background-position: 55% 50%;
+  outline: none;
+  margin-right: 20px;
+}
 @media only screen and (max-width: 1199px) {
   .services-slider .slider-arrow.prev {
     left: 25px;

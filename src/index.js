@@ -81,6 +81,7 @@ const sendForm = (
   let statusMessage = document.createElement("div");
   statusMessage.style.cssText = `${color} padding-top: 10px; font-size: 14px;`;
   const checkDom = document.getElementById(`${linkCheck}`);
+  /// (8 пункт ТЗ) Запретить отправку если не стоит галочка согласен на обработку данных
   const check = (event) => {
     const target = event.target;
     if (target.matches('[type="submit"]')) {
@@ -124,7 +125,7 @@ sendForm("banner-form", "check1");
 sendForm("card_order", "card_check", "color: black;");
 sendForm("footer_form");
 
-/// Валидатор инпутов
+/// Валидация форм отправки
 const validForm = () => {
   const formNameInput = (event) => {
     const target = event.target;
@@ -206,3 +207,119 @@ const slider = () => {
   startSlide();
 };
 slider();
+
+/// (9 пункт ТЗ) Реализовать слайдер карусель
+const carouselServices = new SliderСarousel({
+  nameSlider: "service",
+  main: ".service-wrapper",
+  wrap: ".services-slider",
+  prev: "#services-prev",
+  next: "#services-next",
+  slidesToShow: 5,
+  infinite: true,
+});
+carouselServices.init();
+
+/// (10 пункт ТЗ) Реализовать слайдер карусель
+const carouselGallery = new SliderСarousel({
+  nameSlider: "gallery",
+  main: ".gallery-wrapper",
+  wrap: ".gallery-slider",
+  prev: "#gallery-prev",
+  next: "#gallery-next",
+  slidesToShow: 1,
+  infinite: true,
+});
+carouselGallery.init();
+
+/// (11 пункт ТЗ) Реализовать калькулятор цены взять со страниц клубов
+
+const cardsCalc = () => {
+  const cardTarget = (event) => {
+    let target = event.target;
+    const cardMozaika = document.getElementById("card_leto_mozaika"),
+      cardSchelkovo = document.getElementById("card_leto_schelkovo"),
+      m1 = document.getElementById("m1"),
+      m2 = document.getElementById("m2"),
+      m3 = document.getElementById("m3"),
+      m4 = document.getElementById("m4");
+    let priceTotal = document.getElementById("price-total"),
+      price,
+      promoCard = document.getElementById("promo_card");
+
+    if (target === cardMozaika && cardMozaika.checked) {
+      price = 1999;
+      priceTotal.textContent = price;
+    }
+    if (cardMozaika.checked && m1.checked) {
+      price = 1999;
+      priceTotal.textContent = price;
+      if (promoCard.value === "ТЕЛО2019") {
+        price = Math.floor((price / 100) * 30);
+        priceTotal.textContent = 1999 - price;
+      }
+    }
+    if (cardMozaika.checked && m2.checked) {
+      price = 9990;
+      priceTotal.textContent = price;
+      if (promoCard.value === "ТЕЛО2019") {
+        price = Math.floor((price / 100) * 30);
+        priceTotal.textContent = 9990 - price;
+      }
+    }
+    if (cardMozaika.checked && m3.checked) {
+      price = 13900;
+      priceTotal.textContent = price;
+      if (promoCard.value === "ТЕЛО2019") {
+        price = Math.floor((price / 100) * 30);
+        priceTotal.textContent = 13900 - price;
+      }
+    }
+    if (cardMozaika.checked && m4.checked) {
+      price = 19900;
+      priceTotal.textContent = price;
+      if (promoCard.value === "ТЕЛО2019") {
+        price = Math.floor((price / 100) * 30);
+        priceTotal.textContent = 19900 - price;
+      }
+    }
+    if (target === cardSchelkovo && cardSchelkovo.checked) {
+      price = 2999;
+      priceTotal.textContent = price;
+    }
+    if (cardSchelkovo.checked && m1.checked) {
+      price = 2999;
+      priceTotal.textContent = price;
+      if (promoCard.value === "ТЕЛО2019") {
+        price = Math.floor((price / 100) * 30);
+        priceTotal.textContent = 2999 - price;
+      }
+    }
+    if (cardSchelkovo.checked && m2.checked) {
+      price = 14990;
+      priceTotal.textContent = price;
+      if (promoCard.value === "ТЕЛО2019") {
+        price = Math.floor((price / 100) * 30);
+        priceTotal.textContent = 14990 - price;
+      }
+    }
+    if (cardSchelkovo.checked && m3.checked) {
+      price = 21990;
+      priceTotal.textContent = price;
+      if (promoCard.value === "ТЕЛО2019") {
+        price = Math.floor((price / 100) * 30);
+        priceTotal.textContent = 21990 - price;
+      }
+    }
+    if (cardSchelkovo.checked && m4.checked) {
+      price = 24990;
+      priceTotal.textContent = price;
+      if (promoCard.value === "ТЕЛО2019") {
+        price = Math.floor((price / 100) * 30);
+        priceTotal.textContent = 24990 - price;
+      }
+    }
+  };
+  document.body.addEventListener("click", cardTarget);
+};
+cardsCalc();
