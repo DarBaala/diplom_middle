@@ -246,7 +246,10 @@ const cardsCalc = () => {
     let priceTotal = document.getElementById("price-total"),
       price,
       promoCard = document.getElementById("promo_card");
-
+    const promo = () => {
+      let pricePromo = Math.floor((price / 100) * 30);
+      priceTotal.textContent = price - pricePromo;
+    };
     if (target === cardMozaika && cardMozaika.checked) {
       price = 1999;
       priceTotal.textContent = price;
@@ -254,34 +257,18 @@ const cardsCalc = () => {
     if (cardMozaika.checked && m1.checked) {
       price = 1999;
       priceTotal.textContent = price;
-      if (promoCard.value === "ТЕЛО2019") {
-        price = Math.floor((price / 100) * 30);
-        priceTotal.textContent = 1999 - price;
-      }
     }
     if (cardMozaika.checked && m2.checked) {
       price = 9990;
       priceTotal.textContent = price;
-      if (promoCard.value === "ТЕЛО2019") {
-        price = Math.floor((price / 100) * 30);
-        priceTotal.textContent = 9990 - price;
-      }
     }
     if (cardMozaika.checked && m3.checked) {
       price = 13900;
       priceTotal.textContent = price;
-      if (promoCard.value === "ТЕЛО2019") {
-        price = Math.floor((price / 100) * 30);
-        priceTotal.textContent = 13900 - price;
-      }
     }
     if (cardMozaika.checked && m4.checked) {
       price = 19900;
       priceTotal.textContent = price;
-      if (promoCard.value === "ТЕЛО2019") {
-        price = Math.floor((price / 100) * 30);
-        priceTotal.textContent = 19900 - price;
-      }
     }
     if (target === cardSchelkovo && cardSchelkovo.checked) {
       price = 2999;
@@ -290,34 +277,21 @@ const cardsCalc = () => {
     if (cardSchelkovo.checked && m1.checked) {
       price = 2999;
       priceTotal.textContent = price;
-      if (promoCard.value === "ТЕЛО2019") {
-        price = Math.floor((price / 100) * 30);
-        priceTotal.textContent = 2999 - price;
-      }
     }
     if (cardSchelkovo.checked && m2.checked) {
       price = 14990;
       priceTotal.textContent = price;
-      if (promoCard.value === "ТЕЛО2019") {
-        price = Math.floor((price / 100) * 30);
-        priceTotal.textContent = 14990 - price;
-      }
     }
     if (cardSchelkovo.checked && m3.checked) {
       price = 21990;
       priceTotal.textContent = price;
-      if (promoCard.value === "ТЕЛО2019") {
-        price = Math.floor((price / 100) * 30);
-        priceTotal.textContent = 21990 - price;
-      }
     }
     if (cardSchelkovo.checked && m4.checked) {
       price = 24990;
       priceTotal.textContent = price;
-      if (promoCard.value === "ТЕЛО2019") {
-        price = Math.floor((price / 100) * 30);
-        priceTotal.textContent = 24990 - price;
-      }
+    }
+    if (promoCard.value === "ТЕЛО2019") {
+      promo();
     }
   };
   document.body.addEventListener("click", cardTarget);
