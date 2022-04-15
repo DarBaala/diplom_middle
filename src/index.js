@@ -233,7 +233,6 @@ const carouselGallery = new SliderСarousel({
 carouselGallery.init();
 
 /// (11 пункт ТЗ) Реализовать калькулятор цены взять со страниц клубов
-
 const cardsCalc = () => {
   const cardTarget = (event) => {
     let target = event.target;
@@ -244,7 +243,7 @@ const cardsCalc = () => {
       m3 = document.getElementById("m3"),
       m4 = document.getElementById("m4");
     let priceTotal = document.getElementById("price-total"),
-      price,
+      price = 1999,
       promoCard = document.getElementById("promo_card");
     const promo = () => {
       let pricePromo = Math.floor((price / 100) * 30);
@@ -290,7 +289,11 @@ const cardsCalc = () => {
       price = 24990;
       priceTotal.textContent = price;
     }
-    if (promoCard.value === "ТЕЛО2019") {
+    if (
+      promoCard.value === "ТЕЛО2019" ||
+      promoCard.value === "Тело2019" ||
+      promoCard.value === "тело2019"
+    ) {
       promo();
     }
   };
