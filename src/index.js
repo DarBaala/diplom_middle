@@ -300,3 +300,55 @@ const cardsCalc = () => {
   document.body.addEventListener("click", cardTarget);
 };
 cardsCalc();
+
+/// (15 пункт ТЗ) Написать скрипт, чтобы при скролле ниже бургера, меню прилипала к верху
+const burgerScroll = () => {
+  const header = document.querySelector(".top-menu"),
+    first = document.querySelector(".head-main"),
+    headerHeight = header.offsetHeight,
+    firstHeight = first.offsetHeight;
+  console.log(firstHeight);
+  window.addEventListener("scroll", () => {
+    let scrollDistanse = window.scrollY;
+    if (scrollDistanse > firstHeight) {
+      header.classList.add("head-fixed");
+      first.style.marginTop = `${headerHeight}px`;
+    } else {
+      header.classList.remove("head-fixed");
+      first.style.marginTop = null;
+    }
+  });
+};
+burgerScroll();
+
+/// (16 пункт ТЗ) Cкрипт который по клику на бургер будет открывать '.popup-menu'
+const burger = () => {
+  const burgerOpen = (event) => {
+    const burgerBtn = document.getElementById("burger-open"),
+      popupMenu = document.querySelector(".popup-menu");
+    let target = event.target;
+    if (target === burgerBtn) {
+      popupMenu.style.display = "flex";
+    } else if (target !== popupMenu) {
+      popupMenu.style.display = "none";
+    }
+  };
+  document.body.addEventListener("click", burgerOpen);
+};
+burger();
+
+/// (17 пункт ТЗ) Стрелка в правом нижнем углу должна появляться когда проскроллил первый блок
+const toTop = () => {
+  const toTop = document.getElementById("totop"),
+    headSlider = document.querySelector(".header-main"),
+    headSliderHeigh = headSlider.offsetHeight;
+  window.addEventListener("scroll", () => {
+    let scrollDistanse = window.scrollY;
+    if (headSliderHeigh < scrollDistanse) {
+      toTop.style.display = "inline-block";
+    } else {
+      toTop.style.display = "none";
+    }
+  });
+};
+toTop();

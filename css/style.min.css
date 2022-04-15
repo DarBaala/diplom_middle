@@ -2112,6 +2112,11 @@ p.personal-data input[type="checkbox"]:checked + label:before {
   header .head-main .right .free-visit img {
     margin-right: 15px;
   }
+  .head-fixed {
+    position: fixed;
+    right: 0;
+    top: 0;
+  }
   #clubs .content {
     -ms-flex-wrap: wrap;
     -o-flex-wrap: wrap;
