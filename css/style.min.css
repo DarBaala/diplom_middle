@@ -1342,6 +1342,9 @@ nav.popup-menu .close-menu-btn img {
   padding-left: 15px;
   padding-right: 15px;
 }
+.service-wrapper {
+  position: relative;
+}
 .services-slider .slide {
   text-align: center;
   margin-right: 6px;

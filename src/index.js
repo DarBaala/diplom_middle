@@ -209,28 +209,31 @@ const slider = () => {
 slider();
 
 /// (9 пункт ТЗ) Реализовать слайдер карусель
-const carouselServices = new SliderСarousel({
-  nameSlider: "service",
+const carouselServices = new SliderCarousel({
   main: ".service-wrapper",
   wrap: ".services-slider",
   prev: "#services-prev",
   next: "#services-next",
   slidesToShow: 5,
   infinite: true,
+  responsive: [
+    {
+      breakpoint: 1024,
+      slideToShow: 3,
+    },
+    {
+      breakpoint: 768,
+      slideToShow: 2,
+    },
+    {
+      breakpoint: 576,
+      slideToShow: 1,
+    },
+  ],
 });
 carouselServices.init();
 
 /// (10 пункт ТЗ) Реализовать слайдер карусель
-const carouselGallery = new SliderСarousel({
-  nameSlider: "gallery",
-  main: ".gallery-wrapper",
-  wrap: ".gallery-slider",
-  prev: "#gallery-prev",
-  next: "#gallery-next",
-  slidesToShow: 1,
-  infinite: true,
-});
-carouselGallery.init();
 
 /// (11 пункт ТЗ) Реализовать калькулятор цены взять со страниц клубов
 const cardsCalc = () => {
@@ -307,7 +310,6 @@ const burgerScroll = () => {
     first = document.querySelector(".head-main"),
     headerHeight = header.offsetHeight,
     firstHeight = first.offsetHeight;
-  console.log(firstHeight);
   window.addEventListener("scroll", () => {
     let scrollDistanse = window.scrollY;
     if (scrollDistanse > firstHeight) {
@@ -315,7 +317,7 @@ const burgerScroll = () => {
       first.style.marginTop = `${headerHeight}px`;
     } else {
       header.classList.remove("head-fixed");
-      first.style.marginTop = null;
+      first.style.marginTop = 0;
     }
   });
 };
